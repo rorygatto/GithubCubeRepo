@@ -7,7 +7,7 @@ cube(`LineItems`, {
       measures: [LineItems.count],
       timeDimension: LineItems.createdAt,
       granularity: `second`,
-      partitionGranularity: `hour`
+      partitionGranularity: `day`
     }
   },
   joins: {
