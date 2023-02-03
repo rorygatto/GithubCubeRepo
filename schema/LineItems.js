@@ -6,7 +6,8 @@ cube(`LineItems`, {
     longBuild: {
       measures: [LineItems.count],
       timeDimension: LineItems.createdAt,
-      granularity: `second`
+      granularity: `second`,
+      partitionGranularity: `hour`
     }
   },
   joins: {
