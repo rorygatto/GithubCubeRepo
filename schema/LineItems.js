@@ -2,13 +2,6 @@ cube(`LineItems`, {
   sql: `SELECT * FROM public.line_items`,
   preAggregations: {// Pre-Aggregations definitions go here
     // Learn more here: https://cube.dev/docs/caching/pre-aggregations/getting-started
-
-    longBuild: {
-      measures: [LineItems.count],
-      timeDimension: LineItems.createdAt,
-      granularity: `second`,
-      partitionGranularity: `day`
-    }
   },
   joins: {
     Products: {
