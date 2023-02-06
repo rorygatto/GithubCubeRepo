@@ -25,7 +25,13 @@ cube(`Orders`, {
       //     columns: [CUBE.createdAt],
       //   },
       // },  
-    }
+    },
+    ordersRollupJoin: {
+      type: `rollupJoin`,
+      measures: [CUBE.count],
+      dimensions: [Orders.status, Orders.userId],
+      rollups: [CUBE.orders1, CUBE.orders2],
+    },
   },
   joins: {
     Users: {
