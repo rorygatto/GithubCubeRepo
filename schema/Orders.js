@@ -9,23 +9,22 @@ cube(`Orders`, {
       dimensions: [Orders.status, Orders.createdAt],
       timeDimension: Orders.completedAt,
       granularity: `month`,
-      indexes: {
-        createdAtIndex: {
-          columns: [CUBE.createdAt],
-        },
-      },
+      // indexes: {
+      //   createdAtIndex: {
+      //     columns: [CUBE.createdAt],
+      //   },
+      // },
     },
     orders2: {
       measures: [Orders.count],
       dimensions: [Orders.userId, Orders.createdAt],
       timeDimension: Orders.completedAt,
       granularity: `month`,
-      indexes: {
-        createdAtIndex: {
-          columns: [CUBE.createdAt],
-        },
-      },
-      
+      // indexes: {
+      //   createdAtIndex: {
+      //     columns: [CUBE.createdAt],
+      //   },
+      // },  
     }
   },
   joins: {
