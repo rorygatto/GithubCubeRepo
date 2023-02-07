@@ -56,6 +56,11 @@ cube(`Products`, {
     createdAt: {
       sql: `created_at`,
       type: `time`
+    },
+    tomato:{
+      sql: `1+1`,
+      type:`number`
+
     }
   }
 });

@@ -4,7 +4,7 @@ cube(`Suppliers`, {
   preAggregations: {
     products: {
       measures: [Products.count],
-      dimensions: [Products.id],
+      dimensions: [Products.id, Products.tomato],
       timeDimension: Products.createdAt,
       granularity: `year`
     }
