@@ -2,8 +2,12 @@ cube(`Suppliers`, {
   sql: `SELECT * FROM public.suppliers`,
   
   preAggregations: {
-    // Pre-Aggregations definitions go here
-    // Learn more here: https://cube.dev/docs/caching/pre-aggregations/getting-started
+    products: {
+      measures: [Products.count],
+      dimensions: [Products.id],
+      timeDimension: Products.createdAt,
+      granularity: `year`
+    }
   },
   
   joins: {
