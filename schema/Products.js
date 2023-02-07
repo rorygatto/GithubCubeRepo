@@ -7,12 +7,12 @@ cube(`Products`, {
     //   granularity: `year`,
     // }
 
-    products: {
-      measures: [Products.count],
-      dimensions: [Products.id],
-      timeDimension: Products.createdAt,
-      granularity: `year`
-    }
+    // products: {
+    //   measures: [Products.count],
+    //   dimensions: [Products.id],
+    //   timeDimension: Products.createdAt,
+    //   granularity: `year`
+    // }
   },
   joins: {
     Suppliers: {
