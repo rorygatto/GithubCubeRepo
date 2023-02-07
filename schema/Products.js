@@ -2,8 +2,12 @@ cube(`Products`, {
   sql: `SELECT * FROM public.products`,
   
   preAggregations: {
-    // Pre-Aggregations definitions go here
-    // Learn more here: https://cube.dev/docs/caching/pre-aggregations/getting-started
+    test:{
+      measures: (CUBE) => [CUBE.count],
+      dimensions: (CUBE) => [CUBE.id],
+      timeDimension: (CUBE) => CUBE.created_at,
+      granularity: `year`,
+    }
   },
   
   joins: {
@@ -39,7 +43,8 @@ cube(`Products`, {
     id: {
       sql: `id`,
       type: `number`,
-      primaryKey: true
+      primaryKey: true,
+      shown: true
     },
     
     name: {

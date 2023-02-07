@@ -5,37 +5,21 @@ cube(`Orders`, {
     // Pre-Aggregations definitions go here
     // Learn more here: https://cube.dev/docs/caching/pre-aggregations/getting-started
     orders1: {
-      measures: [Orders.count],
-      dimensions: [Orders.status, Orders.createdAt],
-      timeDimension: Orders.completedAt,
-      granularity: `month`,
-      // indexes: {
-      //   createdAtIndex: {
-      //     columns: [CUBE.createdAt],
-      //   },
-      // },
-    },
-    orders2: {
-      measures: [Orders.count],
-      dimensions: [Orders.userId, Orders.createdAt],
-      timeDimension: Orders.completedAt,
-      granularity: `month`,
-      // indexes: {
-      //   createdAtIndex: {
-      //     columns: [CUBE.createdAt],
-      //   },
-      // },  
+      measures: [CUBE.count],
+      dimensions: [CUBE.userId, CUBE.status],
+      timeDimension: CUBE.createdAt,
+      granularity: `day`,
     },
     ordersRollupJoin: {
       type: `rollupJoin`,
       measures: [CUBE.count],
-      dimensions: [Orders.status, Orders.userId],
-      rollups: [CUBE.orders1, CUBE.orders2],
+      dimensions: [Users.firstName],
+      rollups: [Users.users1, CUBE.orders1],
     },
   },
   joins: {
     Users: {
-      sql: `${CUBE}.user_id = ${Users}.id`,
+      sql: `${CUBE.userId} = ${Users.id}`,
       relationship: `belongsTo`
     },
     Products: {

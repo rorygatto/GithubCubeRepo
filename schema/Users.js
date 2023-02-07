@@ -4,6 +4,9 @@ cube(`Users`, {
   preAggregations: {
     // Pre-Aggregations definitions go here
     // Learn more here: https://cube.dev/docs/caching/pre-aggregations/getting-started
+    users1: {
+      dimensions: [CUBE.id, CUBE.firstName]
+    },
   },
   
   joins: {
