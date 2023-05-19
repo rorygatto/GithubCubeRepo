@@ -26,7 +26,16 @@ cube(`orders`, {
     number: {
       sql: `number`,
       type: `sum`
+    },
+    
+    DoesThisWork:{
+      sql: `id`,
+      type: `number`,
+      rolling_window: {
+        trailing: `unbounded`,
+      }
     }
+
   },
   
   dimensions: {
