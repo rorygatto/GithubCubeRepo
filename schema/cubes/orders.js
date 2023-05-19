@@ -43,7 +43,8 @@ cube(`orders`, {
     id: {
       sql: `id`,
       type: `number`,
-      primary_key: true
+      primary_key: true,
+      shown: true
     },
     
     status: {
