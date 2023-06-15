@@ -5,12 +5,9 @@ const refreshKey = {
 };
 const partitionGranularity = `week`;
 const granularity = `day`;
-
 cube(`orders`, {
   sql_table: `public.orders`,
-  
   pre_aggregations: {
-
     main: {
       measures: [
         orders.count,
@@ -23,11 +20,6 @@ cube(`orders`, {
         orders.status,
         orders.completed_at,
       ],
-      // indexes: {
-      //   platform_podcast_category_country: {
-      //     columns: [platform, podcastSlug, category, countryCode],
-      //   },
-      // },
       timeDimension: orders.created_at,
       granularity,
       partitionGranularity,
