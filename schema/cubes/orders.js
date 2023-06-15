@@ -31,6 +31,12 @@ cube(`orders`, {
       granularity,
       partitionGranularity,
       refreshKey,
+      buildRangeStart: {
+        sql: `SELECT DATE('2018-12-31')`,
+      },
+      buildRangeEnd: {
+        sql: `SELECT CURRENT_DATE()`,
+      },
     }
 
   },
