@@ -1,6 +1,7 @@
 const refreshKey = {
   incremental: true,
   every: `1 day`,
+  update_window: `1 week`
 };
 const partitionGranularity = `week`;
 const granularity = `day`;
