@@ -1,12 +1,36 @@
+const refreshKey = {
+  incremental: true,
+  every: `1 day`,
+};
+const partitionGranularity = `week`;
+const granularity = `day`;
+
 cube(`orders`, {
   sql_table: `public.orders`,
   
   pre_aggregations: {
 
-    main:{
-      measures: [CUBE.one1, CUBE.one2],
-      time_dimension: CUBE.created_at,
-      granularity: `day`,
+    main: {
+      measures: [
+        orders.count,
+        orders.number
+      ],
+      dimensions: [
+        orders.user_id,
+        orders.product_id,
+        orders.id,
+        orders.status,
+        orders.completed_at,
+      ],
+      // indexes: {
+      //   platform_podcast_category_country: {
+      //     columns: [platform, podcastSlug, category, countryCode],
+      //   },
+      // },
+      timeDimension: orders.created_at,
+      granularity,
+      partitionGranularity,
+      refreshKey,
     }
 
   },
