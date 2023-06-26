@@ -26,9 +26,9 @@ cube(`suppliers`, {
     },
     
     address: {
-      //sql: `address`,
+      sql: `address`,
       type: `string`,
-      sql: `email`
+      //sql: `email`
     },
     
     email: {
