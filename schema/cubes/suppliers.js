@@ -1,10 +1,11 @@
 cube(`suppliers`, {
   sql_table: `public.suppliers`,
-  
-  pre_aggregations: {
-    // Pre-Aggregations definitions go here
-    // Learn more here: https://cube.dev/docs/caching/pre-aggregations/getting-started
+
+    refresh_key: {
+    every: `1 hour`,
   },
+  
+  pre_aggregations: {},
   
   joins: {
     
