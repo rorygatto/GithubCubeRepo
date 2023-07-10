@@ -24,6 +24,14 @@ cube(`suppliers`, {
       primary_key: true,
       shown: true
     },
+    id2: {
+      sql: `id`,
+      type: `number`,
+    },
+    id3: {
+      sql: `id`,
+      type: `number`,
+    },
     
     address: {
       sql: `address`,
