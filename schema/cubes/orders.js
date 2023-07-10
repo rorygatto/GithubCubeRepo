@@ -7,32 +7,32 @@ const partitionGranularity = `week`;
 const granularity = `day`;
 cube(`orders`, {
   sql_table: `public.orders`,
-  pre_aggregations: {
-    main: {
-      measures: [
-        orders.count,
-        orders.number
-      ],
-      dimensions: [
-        orders.user_id,
-        orders.product_id,
-        orders.id,
-        orders.status,
-        orders.completed_at,
-      ],
-      timeDimension: orders.created_at,
-      granularity,
-      partitionGranularity,
-      refreshKey,
-      buildRangeStart: {
-        sql: `SELECT DATE('2018-12-31')`,
-      },
-      buildRangeEnd: {
-        sql: `SELECT CURRENT_DATE()`,
-      },
-    }
+  // pre_aggregations: {
+  //   main: {
+  //     measures: [
+  //       orders.count,
+  //       orders.number
+  //     ],
+  //     dimensions: [
+  //       orders.user_id,
+  //       orders.product_id,
+  //       orders.id,
+  //       orders.status,
+  //       orders.completed_at,
+  //     ],
+  //     timeDimension: orders.created_at,
+  //     granularity,
+  //     partitionGranularity,
+  //     refreshKey,
+  //     buildRangeStart: {
+  //       sql: `SELECT DATE('2018-12-31')`,
+  //     },
+  //     buildRangeEnd: {
+  //       sql: `SELECT CURRENT_DATE()`,
+  //     },
+  //   }
 
-  },
+  // },
   
   joins: {
     users: {

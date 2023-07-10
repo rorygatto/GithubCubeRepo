@@ -1,15 +1,13 @@
 cube(`products`, {
   sql_table: `public.products`,
-  pre_aggregations: {
-    main: {
-      measures: [products.CoalesceNullif],
-      dimensions: [products.supplier_id],
-      timeDimension: products.created_at,
-      granularity: `day`
-    }
-  } // Pre-Aggregations definitions go here
-  // Learn more here: https://cube.dev/docs/caching/pre-aggregations/getting-started
-  ,
+  // pre_aggregations: {
+  //   main: {
+  //     measures: [products.CoalesceNullif],
+  //     dimensions: [products.supplier_id],
+  //     timeDimension: products.created_at,
+  //     granularity: `day`
+  //   }
+  // },
 
   joins: {
     suppliers: {
