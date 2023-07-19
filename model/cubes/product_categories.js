@@ -1,19 +1,8 @@
 cube(`product_categories`, {
   sql_table: `public.product_categories`,
   
-  pre_aggregations: {
-    // Pre-Aggregations definitions go here
-    // Learn more here: https://cube.dev/docs/caching/pre-aggregations/getting-started
-  },
-  
   joins: {
     
-  },
-  
-  measures: {
-    count: {
-      type: `count`
-    }
   },
   
   dimensions: {
@@ -32,5 +21,16 @@ cube(`product_categories`, {
       sql: `created_at`,
       type: `time`
     }
+  },
+  
+  measures: {
+    count: {
+      type: `count`
+    }
+  },
+  
+  pre_aggregations: {
+    // Pre-aggregation definitions go here.
+    // Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
   }
 });

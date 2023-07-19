@@ -1,46 +1,19 @@
 cube(`users`, {
   sql_table: `public.users`,
   
-  pre_aggregations: {
-    // Pre-Aggregations definitions go here
-    // Learn more here: https://cube.dev/docs/caching/pre-aggregations/getting-started
-  },
-  
   joins: {
     
   },
   
-  measures: {
-    count: {
-      type: `count`
-    }
-  },
-  
   dimensions: {
-    age: {
-      sql: `age`,
-      type: `number`
-    },
-    
     id: {
       sql: `id`,
       type: `number`,
-      primary_key: true,
-      shown: true
+      primary_key: true
     },
     
-    city: {
-      sql: `city`,
-      type: `string`
-    },
-    
-    company: {
-      sql: `company`,
-      type: `string`
-    },
-    
-    gender: {
-      sql: `gender`,
+    age: {
+      sql: `age`,
       type: `string`
     },
     
@@ -54,8 +27,23 @@ cube(`users`, {
       type: `string`
     },
     
+    city: {
+      sql: `city`,
+      type: `string`
+    },
+    
+    company: {
+      sql: `company`,
+      type: `string`
+    },
+    
     state: {
       sql: `state`,
+      type: `string`
+    },
+    
+    gender: {
+      sql: `gender`,
       type: `string`
     },
     
@@ -63,5 +51,16 @@ cube(`users`, {
       sql: `created_at`,
       type: `time`
     }
+  },
+  
+  measures: {
+    count: {
+      type: `count`
+    }
+  },
+  
+  pre_aggregations: {
+    // Pre-aggregation definitions go here.
+    // Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
   }
 });

@@ -1,42 +1,20 @@
 cube(`suppliers`, {
   sql_table: `public.suppliers`,
-
-    refresh_key: {
-    every: `1 hour`,
-  },
-  
-  pre_aggregations: {},
   
   joins: {
     
-  },
-  
-  measures: {
-    count: {
-      type: `count`
-    }
   },
   
   dimensions: {
     id: {
       sql: `id`,
       type: `number`,
-      primary_key: true,
-      shown: true
-    },
-    id2: {
-      sql: `id`,
-      type: `number`,
-    },
-    id3: {
-      sql: `id`,
-      type: `number`,
+      primary_key: true
     },
     
     address: {
       sql: `address`,
-      type: `string`,
-      //sql: `email`
+      type: `string`
     },
     
     email: {
@@ -53,5 +31,16 @@ cube(`suppliers`, {
       sql: `created_at`,
       type: `time`
     }
+  },
+  
+  measures: {
+    count: {
+      type: `count`
+    }
+  },
+  
+  pre_aggregations: {
+    // Pre-aggregation definitions go here.
+    // Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
   }
 });

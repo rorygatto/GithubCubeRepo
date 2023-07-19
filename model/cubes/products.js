@@ -1,70 +1,59 @@
 cube(`products`, {
   sql_table: `public.products`,
-  // pre_aggregations: {
-  //   main: {
-  //     measures: [products.CoalesceNullif],
-  //     dimensions: [products.supplier_id],
-  //     timeDimension: products.created_at,
-  //     granularity: `day`
-  //   }
-  // },
-
+  
   joins: {
-    suppliers: {
-      sql: `${CUBE}.supplier_id = ${suppliers}.id
-      AND
-      (${CUBE.supplier_id2} = ${suppliers.id2}
-      OR
-      ${CUBE.supplier_id3} = ${suppliers.id3})`,
-      relationship: `many_to_one`
-    },
     product_categories: {
       sql: `${CUBE}.product_category_id = ${product_categories}.id`,
       relationship: `many_to_one`
-    }
-  },
-  measures: {
-    CoalesceNullif: {
-      sql: `COALESCE(${supplier_id} * 1.0 / NULLIF(${supplier_id},0),0)`,
-      type: `number`
     },
-    count: {
-      type: `count`
+    
+    suppliers: {
+      sql: `${CUBE}.supplier_id = ${suppliers}.id`,
+      relationship: `many_to_one`
     }
   },
+  
   dimensions: {
-    supplier_id: {
-      sql: `supplier_id`,
-      type: `number`
-    },
-    supplier_id2: {
-      sql: `supplier_id`,
-      type: `number`
-    },
-    supplier_id3: {
-      sql: `supplier_id`,
-      type: `number`
-    },
-    product_category_id: {
-      sql: `product_category_id`,
-      type: `number`
-    },
     id: {
       sql: `id`,
       type: `number`,
       primary_key: true
     },
+    
+    product_category_id: {
+      sql: `product_category_id`,
+      type: `string`
+    },
+    
+    supplier_id: {
+      sql: `supplier_id`,
+      type: `string`
+    },
+    
     name: {
       sql: `name`,
       type: `string`
     },
+    
     description: {
       sql: `description`,
       type: `string`
     },
+    
     created_at: {
       sql: `created_at`,
       type: `time`
     }
+  },
+  
+  measures: {
+    count: {
+      type: `count`
+    }
+  },
+  
+  pre_aggregations: {
+    // Pre-aggregation definitions go here.
+    // Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
   }
 });

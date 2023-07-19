@@ -1,13 +1,16 @@
 cube(`line_items_count_by_states`, {
   sql_table: `public.line_items_count_by_states`,
   
-  pre_aggregations: {
-    // Pre-Aggregations definitions go here
-    // Learn more here: https://cube.dev/docs/caching/pre-aggregations/getting-started
-  },
-  
   joins: {
     
+  },
+  
+  dimensions: {
+    users_state: {
+      sql: `users_state`,
+      type: `string`,
+      primary_key: true
+    }
   },
   
   measures: {
@@ -21,11 +24,8 @@ cube(`line_items_count_by_states`, {
     }
   },
   
-  dimensions: {
-    users_state: {
-      sql: `users_state`,
-      type: `string`,
-      primary_key: true
-    }
+  pre_aggregations: {
+    // Pre-aggregation definitions go here.
+    // Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
   }
 });
