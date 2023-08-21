@@ -58,7 +58,19 @@ cube(`orders`, {
   },
   
   pre_aggregations: {
-    // Pre-aggregation definitions go here.
-    // Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+
+        cronTest: {
+      measures: [CUBE.count],
+      dimensions: [CUBE.product_id],
+      timeDimension: CUBE.created_at,
+      granularity: `day`,
+      partitionGranularity: `month`,
+      refreshKey: {
+        every: "30 5 * * 5",
+        timezone: "America/Los_Angeles",
+      },
+    },
+
+  
   }
 });
