@@ -61,7 +61,7 @@ cube(`orders`, {
 
         cronTest: {
       measures: [CUBE.count],
-      dimensions: [CUBE.product_id, CUBE.status],
+      dimensions: [CUBE.product_id, CUBE.status, CUBE.user_id],
       timeDimension: CUBE.created_at,
       granularity: `day`,
       partitionGranularity: `month`,
