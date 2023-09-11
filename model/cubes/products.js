@@ -14,6 +14,11 @@ cube(`products`, {
   },
   
   dimensions: {
+    ten:{
+      sql:`10`,
+      type:`number`
+    },
+
     id: {
       sql: `id`,
       type: `number`,
