@@ -6,10 +6,15 @@ cube(`companies`, {
   },
   
   dimensions: {
+
     ten:{
       sql: `10`,
       type: `number`
     },
+    eleven:{
+      sql: `11`,
+      type: `number`
+    }, 
     
     id: {
       sql: `id`,
