@@ -19,6 +19,11 @@ cube(`products`, {
       type:`number`
     },
 
+    eleven:{
+      sql:`11`,
+      type:`number`
+    },
+
     id: {
       sql: `id`,
       type: `number`,
